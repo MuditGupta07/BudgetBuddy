@@ -1,0 +1,131 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(180deg, #f0fdf4, #d1fae5);
+    color: #1f2937;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Fix Hero Section Overlap */
+  .hero {
+    text-align: center;
+    padding: 100px 20px 50px; /* Added top padding to fix overlap */
+    background: linear-gradient(90deg, #10b981, #047857);
+    color: #ffffff;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #047857;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Enhancements */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .floating-label input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #10b981;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .floating-label input:focus {
+    border-color: #047857;
+  }
+  
+  fieldset {
+    border: 2px solid #10b981;
+    border-radius: 5px;
+    padding: 15px;
+    background: #f9fafb;
+  }
+  
+  legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #047857;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .add-expense-btn {
+    background: #10b981;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .add-expense-btn:hover {
+    background: #047857;
+  }
+  
+  .submit-btn {
+    background: linear-gradient(90deg, #10b981, #047857);
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background: linear-gradient(90deg, #047857, #10b981);
+    transform: scale(1.05);
+  }
