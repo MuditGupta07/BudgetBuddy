@@ -80,8 +80,73 @@ function calculatePercentages(data) {
     return totals;
   }
   
+  function renderSingleTransactionChart(transaction) {
+    // Clear any existing chart
+    const chartElement = document.getElementById('expensesChart');
+    if (Chart.getChart(chartElement)) {
+      Chart.getChart(chartElement).destroy();
+    }
+  
+    const data = {};
+    
+    // Add regular expenses
+    for (const key in transaction.expenses) {
+      if (transaction.expenses[key] > 0) {
+        const category = key.charAt(0).toUpperCase() + key.slice(1);
+        data[category] = transaction.expenses[key];
+      }
+    }
+  
+    // Add custom expenses
+    if (transaction.customExpenses && Array.isArray(transaction.customExpenses)) {
+      transaction.customExpenses.forEach(ce => {
+        data[ce.name] = ce.amount;
+      });
+    }
+  
+    const ctx = chartElement.getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(data),
+        datasets: [{
+          label: `Expenses for ${transaction.date}`,
+          data: Object.values(data),
+          backgroundColor: 'rgba(4, 120, 87, 0.7)',
+          borderColor: 'rgba(4, 120, 87, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Amount (₹)'
+            }
+          }
+        }
+      }
+    });
+  
+    // Update expense table
+    renderExpenseTable(data);
+  }
+  
   document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    const aggregated = aggregateExpenses(transactions);
-    renderChart(aggregated);
+  
+    if (id) {
+      const transaction = transactions.find(tx => tx.id.toString() === id);
+      if (transaction) {
+        renderSingleTransactionChart(transaction);
+      }
+    } else {
+      const aggregated = aggregateExpenses(transactions);
+      renderChart(aggregated);
+    }
   });
