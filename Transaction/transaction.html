@@ -26,6 +26,7 @@
       </div>
     </div>
     <div id="tabs">
+      <!-- In Transaction.html -->
       <div class="texts">
         <a href="transaction.html" class="active"><i class="fas fa-exchange-alt"></i> Transactions</a>
       </div>
@@ -48,39 +49,99 @@
   <div class="container">
     <h1 class="page-title">Add Your Transaction</h1>
     <form id="transactionForm" class="form-container">
-      <div class="floating-label">
-        <input type="number" id="salary" name="salary" min="0" step="0.01" required placeholder=" " />
-        <label for="salary">Salary</label>
+      <div class="floating-label salary-container">
+        <!-- Replace the salary section with -->
+        <fieldset class="expenses-fieldset salary-section">
+          <legend class="expenses-legend">
+            <i class="fas fa-wallet"></i>
+            Salary Details
+          </legend>
+          <div class="expense-card salary-card">
+            <i class="fas fa-money-bill-wave expense-icon"></i>
+            <div class="floating-label">
+              <input type="number" id="salary" name="salary" min="0" step="0.01" required placeholder=" " />
+              <label for="salary"></label>
+            </div>
+            <div class="salary-actions">
+              <button type="button" id="refreshSalary" class="action-btn refresh-btn">
+                <i class="fas fa-sync-alt"></i> Reset
+              </button>
+              <div class="bonus-input-container">
+                <input type="number" id="bonusAmount" class="bonus-input" min="0" step="0.01" placeholder="Bonus Amount" />
+                <button type="button" id="addToSalary" class="action-btn add-btn">
+                  <i class="fas fa-plus"></i> Add
+                </button>
+              </div>
+            </div>
+            <div id="salaryMessage" class="status-message"></div>
+          </div>
+        </fieldset>
+        
+        <!-- Add this between Regular Expenses and Custom Expenses sections -->
+        <fieldset class="expenses-fieldset permanent-expenses" id="permanentExpensesSection" style="display: none;">
+          <legend class="expenses-legend">
+            <i class="fas fa-thumbtack"></i>
+            Permanent Expenses
+          </legend>
+          <div id="permanentExpensesContainer" class="permanent-expenses-grid"></div>
+        </fieldset>
       </div>
 
-      <fieldset>
-        <legend>Expenses</legend>
-        <div class="grid">
-          <div>
-            <label for="groceries">Groceries</label>
-            <input type="number" id="groceries" name="groceries" min="0" step="0.01" />
+      <!-- Regular Expenses Section -->
+      <fieldset class="expenses-fieldset">
+        <legend class="expenses-legend">
+          <i class="fas fa-wallet"></i>
+          Regular Expenses
+        </legend>
+        <div class="expenses-grid">
+          <div class="expense-card">
+            <i class="fas fa-shopping-basket expense-icon"></i>
+            <div class="floating-label">
+              <input type="number" id="groceries" name="groceries" min="0" step="0.01" placeholder=" " />
+              <label for="groceries">Groceries</label>
+            </div>
           </div>
-          <div>
-            <label for="households">Households</label>
-            <input type="number" id="households" name="households" min="0" step="0.01" />
+      
+          <div class="expense-card">
+            <i class="fas fa-home expense-icon"></i>
+            <div class="floating-label">
+              <input type="number" id="households" name="households" min="0" step="0.01" placeholder=" " />
+              <label for="households">Household</label>
+            </div>
           </div>
-          <div>
-            <label for="healthcare">Healthcare</label>
-            <input type="number" id="healthcare" name="healthcare" min="0" step="0.01" />
+      
+          <div class="expense-card">
+            <i class="fas fa-heartbeat expense-icon"></i>
+            <div class="floating-label">
+              <input type="number" id="healthcare" name="healthcare" min="0" step="0.01" placeholder=" " />
+              <label for="healthcare">Healthcare</label>
+            </div>
           </div>
-          <div>
-            <label for="travelling">Travelling</label>
-            <input type="number" id="travelling" name="travelling" min="0" step="0.01" />
+      
+          <div class="expense-card">
+            <i class="fas fa-plane expense-icon"></i>
+            <div class="floating-label">
+              <input type="number" id="travelling" name="travelling" min="0" step="0.01" placeholder=" " />
+              <label for="travelling">Travel</label>
+            </div>
           </div>
-          <div>
-            <label for="education">Education</label>
-            <input type="number" id="education" name="education" min="0" step="0.01" />
+      
+          <div class="expense-card">
+            <i class="fas fa-graduation-cap expense-icon"></i>
+            <div class="floating-label">
+              <input type="number" id="education" name="education" min="0" step="0.01" placeholder=" " />
+              <label for="education">Education</label>
+            </div>
           </div>
         </div>
       </fieldset>
-
-      <fieldset>
-        <legend>Custom Expenses</legend>
+      
+      <!-- Custom Expenses Section -->
+      <fieldset class="expenses-fieldset custom-expenses">
+        <legend class="expenses-legend">
+          <i class="fas fa-plus-circle"></i>
+          Custom Expenses
+        </legend>
         <div id="customExpensesContainer">
           <div class="grid">
             <div>
@@ -90,6 +151,14 @@
             <div>
               <label for="customExpenseAmount0">Amount</label>
               <input type="number" id="customExpenseAmount0" name="customExpenseAmount0" min="0" step="0.01" />
+            </div>
+            <div class="custom-expense-actions">
+              <button type="button" class="make-permanent-btn" title="Make Permanent">
+                <i class="fas fa-thumbtack"></i>
+              </button>
+              <button type="button" class="delete-permanent-btn" title="Delete Permanent">
+                <i class="fas fa-trash"></i>
+              </button>
             </div>
           </div>
         </div>
