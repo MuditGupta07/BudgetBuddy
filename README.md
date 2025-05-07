@@ -93,7 +93,6 @@ Then open `index.html` in your browser. That’s it! 🎉
 ## 🔗 Live Demo
 
 https://muditgupta07.github.io/BudgetBuddy/
-hello
 
 ---
 
